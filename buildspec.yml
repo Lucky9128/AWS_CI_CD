@@ -1,0 +1,20 @@
+version: 2.0
+
+phases:
+  install:
+    commands:
+      runtine-versions:
+        nodejs: latest
+      commands:
+        - echo "installing node"
+  pre_build:
+    commands:
+      - echo "we are at pre build stage"
+  build:
+    commands:
+      - echo "we are at build stage"
+      - echo "testing"
+      - grep -Fq "Congratulations" index.html
+  post_build:
+    commands:
+      - echo "this is post build stage"
