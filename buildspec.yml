@@ -2,11 +2,10 @@ version: 2.0
 
 phases:
   install:
+    runtine-versions:
+      nodejs: latest
     commands:
-      runtine-versions:
-        nodejs: latest
-      commands:
-        - echo "installing node"
+      - echo "installing node"
   pre_build:
     commands:
       - echo "we are at pre build stage"
