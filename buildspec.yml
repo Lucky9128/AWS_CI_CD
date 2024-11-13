@@ -16,14 +16,21 @@ phases:
       - grep -Fq "Congratulations" index.html
       - buildExitCode=$?
     finally:
+      - echo $buildExitCode
       - |
         if [ "$buildExitCode" -ne 0 ]; then
+          - echo "build was failure"
           badge_status=failing
           badge_colour=red
         else
+          - echo "build was success"
           badge_status=passing
           badge_colour=green
         fi
+        
+      - echo $badge_status
+      - echo $badge_colour
+        
       - curl -s "https://img.shields.io/badge/Build-$badge_status-$badge_colour.svg" > main-build.svg
       - aws s3 cp main-build.svg s3://lucky9128-first-test-bucket/demo-2024/main-build.svg --acl public-read --cache-control no-cache
   post_build:
