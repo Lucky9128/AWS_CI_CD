@@ -17,6 +17,7 @@ phases:
       - buildExitCode=$?
     finally:
       - echo "$buildExitCode"
+      - echo "$CODEBUILD_BUILD_SUCCEEDING"
       - |
         if [ "$CODEBUILD_BUILD_SUCCEEDING" -ne 0 ]; then
           echo "build failed"
