@@ -19,7 +19,7 @@ phases:
       - echo "$buildExitCode"
       - echo "$CODEBUILD_BUILD_SUCCEEDING"
       - |
-        if [ "$CODEBUILD_BUILD_SUCCEEDING" -ne 0 ]; then
+        if [ "$CODEBUILD_BUILD_SUCCEEDING" -ne 1 ]; then
           echo "build failed"
           badge_status=failing
           badge_colour=red
