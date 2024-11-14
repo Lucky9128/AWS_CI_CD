@@ -26,8 +26,9 @@ var server = http.createServer(function (req, res) {
             res.end();
         });
     } else {
+        const updatedData = html.toString().replace('BUID_ENV_VARIABLE', process.env.LOCAL_BUILD_ENV);
         res.writeHead(200);
-        res.write(html);
+        res.write(updatedData);
         res.end();
     }
 });
